@@ -2,7 +2,7 @@
 //  TipsFirstTableViewController.h
 //  WayMap
 //
-//  Created by carlos arellano and jean jeon on 4/14/18.
+//  Created by Carlos Arellano and Jean Jeon on 4/14/18.
 //  Copyright © 2018 nyu.edu. All rights reserved.
 //
 
@@ -31,7 +31,7 @@
 @property (strong,nonatomic) TipsSecondTableViewController*Tips1;
 @property (strong )CLLocation*userLocation;
 @property (strong,nonatomic)GooglePlace*SelectedPlace;
-
+@property int index;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;

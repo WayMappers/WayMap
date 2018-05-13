@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0728796D208E335B00AC1FA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0728796C208E335B00AC1FA7 /* GoogleService-Info.plist */; };
+		0744570A208E9F310077126C /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07445709208E9F310077126C /* CustomAnnotation.m */; };
 		07706A6820828B5900C0A054 /* TipsSecondTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07706A6720828B5900C0A054 /* TipsSecondTableViewController.m */; };
 		07706A722082E8CC00C0A054 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07706A712082E8CB00C0A054 /* Mapbox.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		07706A732082E8CC00C0A054 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07706A712082E8CB00C0A054 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -20,12 +21,14 @@
 		078094A62076F5ED00ADFBF3 /* WayMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 078094A52076F5ED00ADFBF3 /* WayMapTests.m */; };
 		078094B12076F5ED00ADFBF3 /* WayMapUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 078094B02076F5ED00ADFBF3 /* WayMapUITests.m */; };
 		078094C62082771700ADFBF3 /* TipsFirstTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078094C52082771700ADFBF3 /* TipsFirstTableViewController.m */; };
+		079A77D2208E6ED5006A692A /* AddNewPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079A77D1208E6ED5006A692A /* AddNewPlaceViewController.m */; };
 		07EB30782087D1DF00762806 /* PlacesInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EB30772087D1DF00762806 /* PlacesInformationViewController.m */; };
 		07EB307B2087E38F00762806 /* GooglePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EB307A2087E38F00762806 /* GooglePlace.m */; };
 		2BB1C1DF22B1F35AA12499DF /* libPods-WayMapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F22FBD2309671A393AB9A7 /* libPods-WayMapTests.a */; };
 		34604AED24512110E9DB0ED9 /* libPods-WayMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8CBC8032AD1D5EC4F3A1A0 /* libPods-WayMap.a */; };
 		7C933562208C637D0032EE2F /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C933561208C637D0032EE2F /* UserProfileViewController.m */; };
 		7C933566208D35AD0032EE2F /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C933564208D35AB0032EE2F /* LogInViewController.m */; };
+		7CA87876209100610047F99F /* UserDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA87875209100610047F99F /* UserDataTableViewController.m */; };
 		8AD4AAA63BCC37CAF50954CB /* libPods-WayMapUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F272E2B9B719845F587B5D /* libPods-WayMapUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		0728796C208E335B00AC1FA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		07445708208E9F310077126C /* CustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		07445709208E9F310077126C /* CustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		07706A6620828B5900C0A054 /* TipsSecondTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipsSecondTableViewController.h; sourceTree = "<group>"; };
 		07706A6720828B5900C0A054 /* TipsSecondTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipsSecondTableViewController.m; sourceTree = "<group>"; };
 		07706A712082E8CB00C0A054 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
@@ -84,6 +89,8 @@
 		078094B22076F5ED00ADFBF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078094C42082771700ADFBF3 /* TipsFirstTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipsFirstTableViewController.h; sourceTree = "<group>"; };
 		078094C52082771700ADFBF3 /* TipsFirstTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipsFirstTableViewController.m; sourceTree = "<group>"; };
+		079A77D0208E6ED5006A692A /* AddNewPlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewPlaceViewController.h; sourceTree = "<group>"; };
+		079A77D1208E6ED5006A692A /* AddNewPlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewPlaceViewController.m; sourceTree = "<group>"; };
 		07EB30762087D1DF00762806 /* PlacesInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesInformationViewController.h; sourceTree = "<group>"; };
 		07EB30772087D1DF00762806 /* PlacesInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesInformationViewController.m; sourceTree = "<group>"; };
 		07EB30792087E38F00762806 /* GooglePlace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GooglePlace.h; sourceTree = "<group>"; };
@@ -97,6 +104,8 @@
 		7C933561208C637D0032EE2F /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7C933563208D35AB0032EE2F /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		7C933564208D35AB0032EE2F /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		7CA87874209100610047F99F /* UserDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDataTableViewController.h; sourceTree = "<group>"; };
+		7CA87875209100610047F99F /* UserDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDataTableViewController.m; sourceTree = "<group>"; };
 		AA8CBC8032AD1D5EC4F3A1A0 /* libPods-WayMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WayMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4D2FDE71C24BB6F725BE22 /* Pods-WayMapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WayMapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WayMapTests/Pods-WayMapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F47D8E3617BF77436E75C0BD /* Pods-WayMapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WayMapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WayMapUITests/Pods-WayMapUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,12 +177,18 @@
 				7C933564208D35AB0032EE2F /* LogInViewController.m */,
 				7C933560208C637D0032EE2F /* UserProfileViewController.h */,
 				7C933561208C637D0032EE2F /* UserProfileViewController.m */,
+				7CA87874209100610047F99F /* UserDataTableViewController.h */,
+				7CA87875209100610047F99F /* UserDataTableViewController.m */,
 				07706A6620828B5900C0A054 /* TipsSecondTableViewController.h */,
 				07706A6720828B5900C0A054 /* TipsSecondTableViewController.m */,
 				07706A772082F01000C0A054 /* MapViewController.h */,
 				07706A782082F01000C0A054 /* MapViewController.m */,
+				07445708208E9F310077126C /* CustomAnnotation.h */,
+				07445709208E9F310077126C /* CustomAnnotation.m */,
 				078094C42082771700ADFBF3 /* TipsFirstTableViewController.h */,
 				078094C52082771700ADFBF3 /* TipsFirstTableViewController.m */,
+				079A77D0208E6ED5006A692A /* AddNewPlaceViewController.h */,
+				079A77D1208E6ED5006A692A /* AddNewPlaceViewController.m */,
 				07EB30792087E38F00762806 /* GooglePlace.h */,
 				07EB307A2087E38F00762806 /* GooglePlace.m */,
 				078094952076F5ED00ADFBF3 /* Assets.xcassets */,
@@ -299,7 +314,7 @@
 				TargetAttributes = {
 					078094882076F5EC00ADFBF3 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					078094A02076F5ED00ADFBF3 = {
 						CreatedOnToolsVersion = 9.2;
@@ -463,11 +478,14 @@
 				07706A6820828B5900C0A054 /* TipsSecondTableViewController.m in Sources */,
 				07706A792082F01000C0A054 /* MapViewController.m in Sources */,
 				07EB307B2087E38F00762806 /* GooglePlace.m in Sources */,
+				7CA87876209100610047F99F /* UserDataTableViewController.m in Sources */,
 				07EB30782087D1DF00762806 /* PlacesInformationViewController.m in Sources */,
+				0744570A208E9F310077126C /* CustomAnnotation.m in Sources */,
 				7C933566208D35AD0032EE2F /* LogInViewController.m in Sources */,
 				7C933562208C637D0032EE2F /* UserProfileViewController.m in Sources */,
 				0780949C2076F5ED00ADFBF3 /* main.m in Sources */,
 				0780948E2076F5EC00ADFBF3 /* AppDelegate.m in Sources */,
+				079A77D2208E6ED5006A692A /* AddNewPlaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,8 +649,9 @@
 			baseConfigurationReference = 65FA49259CFB0366A06FFE86 /* Pods-WayMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59S3NEYJ77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -651,8 +670,9 @@
 			baseConfigurationReference = F54202CECEF46A6750A33D57 /* Pods-WayMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59S3NEYJ77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

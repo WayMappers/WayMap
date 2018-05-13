@@ -2,7 +2,7 @@
 //  TipsSecondTableViewController.m
 //  WayMap
 //
-//  Created by carlos arellano on 4/14/18.
+//  Created by Carlos Arellano and Jean Jeon on 4/14/18.
 //  Copyright © 2018 nyu.edu. All rights reserved.
 //
 
@@ -23,22 +23,23 @@
     
     return self;
 }
+//allocates relevant memory
 - (void)viewDidLoad {
     [super viewDidLoad];
     userLocation=[[CLLocation alloc ]init];
-    // Uncomment the following line to presrve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    SelectedPlace=[[GooglePlace alloc ]init];
 
     self.tabBarController.delegate=self;
     [self.tableView reloadData];
+    for (GooglePlace* location in Food){
+        if (location.CheckedIn){
+            NSLog(@"WOOOO CHECKED IN again!!! %@",location.name);
+        }
+    }
 
 }
 
@@ -49,11 +50,11 @@
 }
 
 #pragma mark - Table view data source
-
+//shoes data to table
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-
+//based on location name, retrieves relevant array that was passed
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([_LocationName isEqualToString:@"Food"]){
         return [Food count];
@@ -77,18 +78,18 @@
 else if ([_LocationName isEqualToString:@"Other"]){
         return [Other count];
     }
-    
+
     return 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SpecificLocation" forIndexPath:indexPath];
-    
+    //shows relevant cell that was passd
     if (cell==nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SpecificLocation"];
     }
-    GooglePlace*SelectedPlace1 = [[GooglePlace alloc]init];
+    GooglePlace*SelectedPlace1=[[GooglePlace alloc]init];;
     if ([_LocationName isEqualToString:@"Food"]){
         SelectedPlace1=[self.Food objectAtIndex:indexPath.row];
         NSLog(@"Showing food %@",SelectedPlace.name);
@@ -128,15 +129,24 @@ else if ([_LocationName isEqualToString:@"Financial"]){
         cell.textLabel.text = SelectedPlace1.name;
     }
     
-    // Configure the cell...
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
-
+//if user clicks on cell, then the selected place will be segued into place info view controller
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Checking food places:");
+    for (GooglePlace* location in Food){
+        NSLog(@"Name of food: %@, %d:",location.name,location.CheckedIn);
+        if (location.Favorited){
+            
+            NSLog(@"WOOOO FAVORITED again x3!!! %@",location.name);
+        }
+        
+    }
     if ([_LocationName isEqualToString:@"Food"]){
-        SelectedPlace=[self.Food objectAtIndex:indexPath.row];
-        NSLog(@"Showing food %@",SelectedPlace.name);
+        SelectedPlace=[Food objectAtIndex:indexPath.row];
+        NSLog(@"Showing food %d",SelectedPlace.Favorited);
     }
     else if ([_LocationName isEqualToString:@"Leisure"]){
         SelectedPlace=[self.Leisure objectAtIndex:indexPath.row];
@@ -165,54 +175,18 @@ else if ([_LocationName isEqualToString:@"Financial"]){
     return indexPath;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
-
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+//segues to information view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showPlace"]){
         PlacesInformationViewController *Place = [segue destinationViewController];
+        NSLog(@"Selected place check in %d",SelectedPlace.CheckedIn);
         Place.SelectedPlace = self.SelectedPlace;
         
         
         
     }
+    //segues random location to info view controller
     else if ([segue.identifier isEqualToString:@"SurpriseMe2"]){
         PlacesInformationViewController *Random=[segue destinationViewController];
         NSMutableArray*ChosenArray;
