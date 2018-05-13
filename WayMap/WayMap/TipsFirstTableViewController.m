@@ -9,12 +9,14 @@
 #import "TipsFirstTableViewController.h"
 #import "MapViewController.h"
 #import "TipsSecondTableViewController.h"
+#import "AppDelegate.h"
 @interface TipsFirstTableViewController ()
 
 
 @end
 @implementation TipsFirstTableViewController
-@synthesize categories,NearbyLocations,Transportation,Occupational,Financial,Food,Lifestyle,Culture,Entertainment,Leisure,Other,Shopping,Tips1,userLocation,SelectedPlace;
+AppDelegate* myDelegate1;
+@synthesize categories,NearbyLocations,Transportation,Occupational,Financial,Food,Lifestyle,Culture,Entertainment,Leisure,Other,Shopping,Tips1,userLocation,SelectedPlace,index;
 NSString* SelectedIndexPath;
 - (id) initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -31,6 +33,7 @@ NSString* SelectedIndexPath;
     categories = [[NSMutableArray alloc] init];
     self.tabBarController.delegate=self;
     SelectedIndexPath = [[NSString alloc ]init];
+    SelectedPlace= [[GooglePlace alloc ]init];
     [super viewDidLoad];
     
     
@@ -42,7 +45,11 @@ NSString* SelectedIndexPath;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+//creates an array of categories and retrieves information from delegate controller
 -(void) viewWillAppear:(BOOL)animated{
+    if (index==1){
+        myDelegate1 = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.NearbyLocations=myDelegate1.LocationsNearby;
     [super viewWillAppear:animated];
     Food = [[NSMutableArray alloc ]init];
     Leisure = [[NSMutableArray alloc ]init];
@@ -54,16 +61,16 @@ NSString* SelectedIndexPath;
     Entertainment = [[NSMutableArray alloc ]init];
     Lifestyle = [[NSMutableArray alloc ]init];
     Shopping = [[NSMutableArray alloc ]init];
-    SelectedPlace=[[GooglePlace alloc]init];
     self.tabBarController.delegate=self;
     int count=0;
-    for (GooglePlace*place in NearbyLocations){
+    for (GooglePlace*place in self.NearbyLocations){
         count++;
         NSLog(@"ADDED TO FOOD ARRAY!");
         NSLog(@"Current Place name %@", place.name);
         
     }
     [categories removeAllObjects];
+//Only shows categories that are present
     [self CategorizeLocations:NearbyLocations];
     if ([Food count]!=0){
         [categories addObject:@"Food"];
@@ -98,12 +105,24 @@ NSString* SelectedIndexPath;
         [categories addObject:@"Other"];
         
     }
+
     NSLog(@"COUNTFOR1: %d",count);
-    
-    [self.tableView reloadData];
+        for (GooglePlace* location in NearbyLocations){
+            if (location.Favorited){
+                NSLog(@"WOOOO FAVORITED!!! %@",location.name);
+            }
+        }
+        index=0;
+        [self.tableView reloadData];
+
+    }
+
+    else{
+        [self.tableView reloadData];
+    }
     
 }
-
+//categorizes different data based on Types array provided by Google Places API
 - (void) CategorizeLocations
 :(GooglePlace*)place{
     for (GooglePlace*place in NearbyLocations){
@@ -113,52 +132,48 @@ NSString* SelectedIndexPath;
         NSLog(@"PLACE TYPE for %@",place.name);
         for (NSString* type in typeplace){
             NSLog(@"iterating through stuff");
-            if ([type isEqualToString:@"bakery"]||[type isEqualToString:@"cafe"]||[type isEqualToString:@"restaurant"]||[type isEqualToString:@"meal_delivery"]||[type isEqualToString:@"meal_takeaway"]){
+            if ([type isEqualToString:@"bakery"]||[type isEqualToString:@"cafe"]||[type isEqualToString:@"restaurant"]||[type isEqualToString:@"meal_delivery"]||[type isEqualToString:@"meal_takeaway"]||[type isEqualToString:@"Food"]){
                 if (![Food containsObject:place]){
                     [Food addObject:place];
                     NSLog(@"adding to food array in first view, Food count %lu",[Food count]);
                 }
                 
             }
-            else if ([type isEqualToString:@"department_store"]||[type isEqualToString:@"beauty_salon"]||[type isEqualToString:@"clothing_store"]||[type isEqualToString:@"book_store"]||[type isEqualToString:@"hair_care"]||[type isEqualToString:@"gym"]||[type isEqualToString:@"shopping_mall"]||[type isEqualToString:@"spa"]||[type isEqualToString:@"museum"]||[type isEqualToString:@"park"]||[type isEqualToString:@"library"]){
+            else if ([type isEqualToString:@"beauty_salon"]||[type isEqualToString:@"hair_care"]||[type isEqualToString:@"gym"]||[type isEqualToString:@"spa"]||[type isEqualToString:@"museum"]||[type isEqualToString:@"park"]||[type isEqualToString:@"library"]||[type isEqualToString:@"Leisure"]){
                 if (![Leisure containsObject:place]){
                     [Leisure addObject:place];}
             }
-            else if ([type isEqualToString:@"beauty_salon"]||[type isEqualToString:@"hair_care"]||[type isEqualToString:@"gym"]||[type isEqualToString:@"spa"]||[type isEqualToString:@"museum"]||[type isEqualToString:@"park"]||[type isEqualToString:@"library"]){
-                if (![Leisure containsObject:place]){
-                    [Leisure addObject:place];}
-            }
-            else if ([type isEqualToString:@"department_store"]||[type isEqualToString:@"shoe_store"]||[type isEqualToString:@"shopping_mall"]||[type isEqualToString:@"clothing_store"]||[type isEqualToString:@"book_store"]||[type isEqualToString:@"electronics_store"]||[type isEqualToString:@"bicycle_store"]||[type isEqualToString:@"home_goods_store"]||[type isEqualToString:@"jewelry_store"]||[type isEqualToString:@"pet_store"]||[type isEqualToString:@"convenience_store"]||[type isEqualToString:@"hardware_store"]||[type isEqualToString:@"store"]){
+            else if ([type isEqualToString:@"department_store"]||[type isEqualToString:@"shoe_store"]||[type isEqualToString:@"shopping_mall"]||[type isEqualToString:@"clothing_store"]||[type isEqualToString:@"book_store"]||[type isEqualToString:@"electronics_store"]||[type isEqualToString:@"bicycle_store"]||[type isEqualToString:@"home_goods_store"]||[type isEqualToString:@"jewelry_store"]||[type isEqualToString:@"pet_store"]||[type isEqualToString:@"convenience_store"]||[type isEqualToString:@"hardware_store"]||[type isEqualToString:@"store"]||[type isEqualToString:@"Shopping"]){
                 if (![Shopping containsObject:place]){
                     [Shopping addObject:place];}
             }
-            else if ([type isEqualToString:@"aquarium"]||[type isEqualToString:@"casino"]||[type isEqualToString:@"bowling_alley"]||[type isEqualToString:@"amusement_park"]||[type isEqualToString:@"zoo"]||[type isEqualToString:@"art_gallery"]||[type isEqualToString:@"bar"]||[type isEqualToString:@"campground"]||[type isEqualToString:@"night_club"]||[type isEqualToString:@"movie_rental"]||[type isEqualToString:@"movie_theater"]||[type isEqualToString:@"stadium"]){
+            else if ([type isEqualToString:@"aquarium"]||[type isEqualToString:@"casino"]||[type isEqualToString:@"bowling_alley"]||[type isEqualToString:@"amusement_park"]||[type isEqualToString:@"zoo"]||[type isEqualToString:@"art_gallery"]||[type isEqualToString:@"bar"]||[type isEqualToString:@"campground"]||[type isEqualToString:@"night_club"]||[type isEqualToString:@"movie_rental"]||[type isEqualToString:@"movie_theater"]||[type isEqualToString:@"stadium"]||[type isEqualToString:@"Entertainment"]){
                 if (![Entertainment containsObject:place]){
                     [Entertainment addObject:place];
                     NSLog(@"count for entertain: %@ %lu",place,[Entertainment count]);
                 }
             }
-            else if ([type isEqualToString:@"synagogue"]||[type isEqualToString:@"hindu_temple"]||[type isEqualToString:@"church"]||[type isEqualToString:@"city_hall"]||[type isEqualToString:@"mosque"]){
+            else if ([type isEqualToString:@"synagogue"]||[type isEqualToString:@"hindu_temple"]||[type isEqualToString:@"church"]||[type isEqualToString:@"city_hall"]||[type isEqualToString:@"mosque"]||[type isEqualToString:@"Culture"]){
                 if (![Culture containsObject:place]){
                     [Culture addObject:place];}
             }
-            else if ([type isEqualToString:@"airport"]||[type isEqualToString:@"bus_station"]||[type isEqualToString:@"gas_station"]||[type isEqualToString:@"car_dealer"]||[type isEqualToString:@"car_rental"]||[type isEqualToString:@"car_repair"]||[type isEqualToString:@"car_wash"]||[type isEqualToString:@"car_wash"]||[type isEqualToString:@"taxi_stand"]||[type isEqualToString:@"train_station"]||[type isEqualToString:@"travel_agency"]||[type isEqualToString:@"parking"]||[type isEqualToString:@"subway_station"]||[type isEqualToString:@"moving_company"]||[type isEqualToString:@"lodging"]){
+            else if ([type isEqualToString:@"airport"]||[type isEqualToString:@"bus_station"]||[type isEqualToString:@"gas_station"]||[type isEqualToString:@"car_dealer"]||[type isEqualToString:@"car_rental"]||[type isEqualToString:@"car_repair"]||[type isEqualToString:@"car_wash"]||[type isEqualToString:@"car_wash"]||[type isEqualToString:@"taxi_stand"]||[type isEqualToString:@"train_station"]||[type isEqualToString:@"travel_agency"]||[type isEqualToString:@"parking"]||[type isEqualToString:@"subway_station"]||[type isEqualToString:@"moving_company"]||[type isEqualToString:@"lodging"]||[type isEqualToString:@"Transportation"]){
                 if (![Transportation containsObject:place]){
                     [Transportation addObject:place];}
             }
-            else if ([type isEqualToString:@"accounting"]||[type isEqualToString:@"atm"]||[type isEqualToString:@"bank"]||[type isEqualToString:@"insurance_agency"]){
+            else if ([type isEqualToString:@"accounting"]||[type isEqualToString:@"atm"]||[type isEqualToString:@"bank"]||[type isEqualToString:@"insurance_agency"]||[type isEqualToString:@"Financial"]){
                 if (![Financial containsObject:place]){
                     [Financial addObject:place];}
             }
-            else if ([type isEqualToString:@"dentist"]||[type isEqualToString:@"doctor"]||[type isEqualToString:@"electrician"]||[type isEqualToString:@"florist"]||[type isEqualToString:@"locksmith"]||[type isEqualToString:@"painter"]||[type isEqualToString:@"physiotherapist"]||[type isEqualToString:@"plumber"]||[type isEqualToString:@"lawyer"]||[type isEqualToString:@"real_estate_agency"]||[type isEqualToString:@"roofing_contractor"]){
+            else if ([type isEqualToString:@"dentist"]||[type isEqualToString:@"doctor"]||[type isEqualToString:@"electrician"]||[type isEqualToString:@"florist"]||[type isEqualToString:@"locksmith"]||[type isEqualToString:@"painter"]||[type isEqualToString:@"physiotherapist"]||[type isEqualToString:@"plumber"]||[type isEqualToString:@"lawyer"]||[type isEqualToString:@"real_estate_agency"]||[type isEqualToString:@"roofing_contractor"]||[type isEqualToString:@"Occupational"]){
                 if (![Occupational containsObject:place]){
                     [Occupational addObject:place];}
             }
-            else if ([type isEqualToString:@"funeral_home"]||[type isEqualToString:@"furniture_store"]||[type isEqualToString:@"embassy"]||[type isEqualToString:@"fire_station"]||[type isEqualToString:@"cemetery"]||[type isEqualToString:@"veterinary_care"]||[type isEqualToString:@"courthouse"]||[type isEqualToString:@"rv_park"]||[type isEqualToString:@"police"]||[type isEqualToString:@"hospital"]){
+            else if ([type isEqualToString:@"funeral_home"]||[type isEqualToString:@"furniture_store"]||[type isEqualToString:@"embassy"]||[type isEqualToString:@"fire_station"]||[type isEqualToString:@"cemetery"]||[type isEqualToString:@"veterinary_care"]||[type isEqualToString:@"courthouse"]||[type isEqualToString:@"rv_park"]||[type isEqualToString:@"police"]||[type isEqualToString:@"hospital"]||[type isEqualToString:@"Other"]){
                 if (![Other containsObject:place]){
                     [Other addObject:place];}
             }
-            else if ([type isEqualToString:@"laundry"]||[type isEqualToString:@"pharmacy"]||[type isEqualToString:@"post_office"]||[type isEqualToString:@"supermarket"]||[type isEqualToString:@"storage"]||[type isEqualToString:@"school"]||[type isEqualToString:@"local_government_office"]){
+            else if ([type isEqualToString:@"laundry"]||[type isEqualToString:@"pharmacy"]||[type isEqualToString:@"post_office"]||[type isEqualToString:@"supermarket"]||[type isEqualToString:@"storage"]||[type isEqualToString:@"school"]||[type isEqualToString:@"local_government_office"]||[type isEqualToString:@"Lifestyle"]){
                 if (![Lifestyle containsObject:place]){
                     [Lifestyle addObject:place];}
             }
@@ -170,19 +185,22 @@ NSString* SelectedIndexPath;
     }
     NSLog(@"done with loop");
 }
-
+//insert information in table view controller
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSLog(@"does this work1");
     
     return 1;
 }
-
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"does this work2");
     NSLog(@"%lu",(unsigned long)[self.categories count]);
     return [self.categories count];
 }
+//chooses random location when button is pressed
 - (IBAction)SurpriseMe:(id)sender {
     int cat = arc4random_uniform([categories count]);
     NSString* Chosen = [categories objectAtIndex:cat];
@@ -217,7 +235,7 @@ NSString* SelectedIndexPath;
     SelectedPlace=RandomPlace;
     [self performSegueWithIdentifier:@"SurpriseMe" sender:self];
 }
-
+//shows information for category
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"does this work3");
@@ -227,14 +245,15 @@ NSString* SelectedIndexPath;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     cell.textLabel.text= [self.categories objectAtIndex:indexPath.row];;
-    // Configure the cell...
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
-
+//unwind segue
 - (IBAction)FirstTipsBackToStart:(UIStoryboardSegue*) segue{
     NSLog(@"Returned again!");
 }
+
 - (BOOL) tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     if ([viewController isKindOfClass:[MapViewController class]]){
         MapViewController *Map = (MapViewController* ) viewController;
@@ -247,42 +266,7 @@ NSString* SelectedIndexPath;
     SelectedIndexPath = [self.categories objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"showMoreDetails" sender:self];
 }
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
- // In a storyboard-based application, you will often want to do a little preparation before navigation
+//segues to next table view which has specific category location
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([segue.identifier isEqualToString:@"showMoreDetails"]){
         // NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

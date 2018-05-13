@@ -9,9 +9,11 @@
 #import "GooglePlace.h"
 
 @implementation GooglePlace
-@synthesize name,placeID,priceLevel,phoneNumber,coordinate,openNow,formattedAddress,rating,website,AnnotationPointer;
+@synthesize name,placeID,priceLevel,phoneNumber,coordinate,openNow,formattedAddress,website,AnnotationPointer,UserAdded,CheckedIn,Favorited,Rating,Rated;
 -(void)Initiate:(NSString*)name:(NSString*)placeID:(CLLocationCoordinate2D)coordinate:(NSArray<NSString*>*) types:(GMSPlacesOpenNowStatus)openNow:(NSString*)phoneNumber:(NSString*)formattedAddress:(float)rating: (GMSPlacesPriceLevel)priceLevel:(NSURL*)website{
-    AnnotationPointer=[[MGLPointAnnotation alloc]init];
+    UserAdded=false;
+    CheckedIn=false;
+    AnnotationPointer = [[CustomAnnotation alloc ]init];
     self.name = [[NSString alloc ]init];
     self.types = [NSMutableArray arrayWithArray:types];
     self.placeID=[[NSString alloc ]init];
@@ -24,10 +26,18 @@
     self.openNow=openNow;
     self.phoneNumber=phoneNumber;
     self.formattedAddress=formattedAddress;
-    self.rating=rating;
     self.priceLevel=priceLevel;
     self.website=website;
-    
+    self.Rated=false;
+    Favorited=false;
+    //this contains all relevant and useful information for the Google Place, provided by Google Places API
+    // Information was passed from google into our own object type
+}
+
+- (void) initiateRating:(float)rating{
+    if (UserAdded){
+        self.Rating=0;
+    }
 }
 @end
 /*@property NSString*name;

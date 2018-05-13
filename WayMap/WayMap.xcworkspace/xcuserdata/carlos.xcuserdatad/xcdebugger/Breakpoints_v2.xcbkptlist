@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/MapViewController.m"
-            timestampString = "546146195.361249"
+            timestampString = "547525437.09726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/TipsFirstTableViewController.h"
-            timestampString = "546118565.812987"
+            timestampString = "546806613.006514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/TipsFirstTableViewController.m"
-            timestampString = "546118565.813042"
+            timestampString = "546806613.006898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/TipsFirstTableViewController.m"
-            timestampString = "546118565.8130929"
+            timestampString = "546806613.0072401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/TipsFirstTableViewController.m"
-            timestampString = "546118565.81314"
+            timestampString = "546806613.007538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,13 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/TipsFirstTableViewController.m"
-            timestampString = "546118565.813187"
+            timestampString = "546806613.007823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "7">
+            endingLineNumber = "303">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,12 +136,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/PlacesInformationViewController.m"
-            timestampString = "546145668.220652"
+            timestampString = "547525437.0974081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "-oneStarBtnPressed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,45 +152,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/MapViewController.m"
-            timestampString = "546146195.361832"
+            timestampString = "547525437.097821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-locationManager:didUpdateLocations:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56-[MapViewController locationManager:didUpdateLocations:]_block_invoke"
-                  moduleName = "WayMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carlos/Desktop/WayMap/WayMap/WayMap/MapViewController.m"
-                  timestampString = "546114744.055301"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "187"
-                  endingLineNumber = "187"
-                  offsetFromSymbolStart = "2686">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56-[MapViewController locationManager:didUpdateLocations:]_block_invoke"
-                  moduleName = "WayMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carlos/Desktop/WayMap/WayMap/WayMap/MapViewController.m"
-                  timestampString = "546114744.059785"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "187"
-                  endingLineNumber = "187"
-                  offsetFromSymbolStart = "2705">
-               </Location>
-            </Locations>
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "MapViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,60 +168,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WayMap/MapViewController.m"
-            timestampString = "546146195.362137"
+            timestampString = "547525437.097877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "-locationManager:didUpdateLocations:"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "-UpdateLocationsNearby:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56-[MapViewController locationManager:didUpdateLocations:]_block_invoke"
-                  moduleName = "WayMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carlos/Desktop/WayMap/WayMap/WayMap/MapViewController.m"
-                  timestampString = "546114776.890636"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "206"
-                  endingLineNumber = "206"
-                  offsetFromSymbolStart = "4885">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_"
-                  moduleName = "WayMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carlos/Desktop/WayMap/WayMap/WayMap/MapViewController.m"
-                  timestampString = "546114776.894835"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "206"
-                  endingLineNumber = "206"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "WayMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carlos/Desktop/WayMap/WayMap/WayMap/MapViewController.m"
-                  timestampString = "546114776.898314"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "206"
-                  endingLineNumber = "206"
-                  offsetFromSymbolStart = "59">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -264,14 +183,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WayMap/MapViewController.m"
-            timestampString = "546146195.362383"
+            filePath = "WayMap/TipsSecondTableViewController.m"
+            timestampString = "546806613.008279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-locationManager:didUpdateLocations:"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-tableView:willSelectRowAtIndexPath:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WayMap/UserProfileViewController.m"
+            timestampString = "546798729.560129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  WayMap
 //
-//  Created by carlos arellano and jean jeon on 4/5/18.
+//  Created by Carlos Arellano and Jean Jeon on 4/5/18.
 //  Copyright © 2018 nyu.edu. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 #import "UserProfileViewController.h"
 #import "MapViewController.h"
 #import "TipsFirstTableViewController.h"
+
 @import GooglePlaces;
 @import UIKit;
 @import Firebase;
@@ -19,36 +20,46 @@
 @end
 
 @implementation AppDelegate
-
+@synthesize CheckInLocations,LocationsNearby,UserAddedLocations,FavoritedPlaces,MyUserAddedLocations,UserLocation;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSPlacesClient provideAPIKey:@"AIzaSyD1r1DuPCcwMFH50vV6hOLK14PWiFqq8DE"];
     [FIRApp configure];
-    //I am fine thank you
-
-    /*Hello
-    //Init Map ViewController
-    MapViewController *mapVC = [[MapViewController alloc]init];
-    mapVC.tabBarItem.title = @"Map";
-    
-    //Init the FIRST Tips ViewController
-    TipsFirstTableViewController *tipsVC = [[TipsFirstTableViewController alloc]init];
-    tipsVC.tabBarItem.title = @"Tips";
-    
-    //Init the User Profile ViewController
-    UserProfileViewController *profileVC = [[UserProfileViewController alloc]init];
-    profileVC.tabBarItem.title = @"Profile";
-    
-    //init the UITabBarController
-    
-    self.tabBarController = [[UITabBarController alloc]init];
-    self.tabBarController.viewControllers = @[mapVC,tipsVC,profileVC];
-    
-    //Add the tab bar controller to the window
-    LogInViewController *loginVC = [[LogInViewController alloc]init];
-    [self.window setRootViewController:loginVC];
-    */
-    //[self.window makeKeyAndVisible];
-    
+    UserLocation=[[CLLocation alloc]init];
+    CheckInLocations=[[NSMutableArray alloc]init];
+    LocationsNearby=[[NSMutableArray alloc]init];
+    UserAddedLocations=[[NSMutableArray alloc]init];
+    MyUserAddedLocations=[[NSMutableArray alloc]init];
+    FIRUser *user = [FIRAuth auth].currentUser;
+    self.RatedPlaces =[[NSMutableArray alloc]init];
+    self.ref = [[FIRDatabase database] reference];
+    //contains information that will be passed in various view controllers while the app is loaded
+    [[[[_ref child:@"users"] child:user.uid] child:@"Places Added"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot){
+        
+        for (FIRDataSnapshot *AddedPlace in snapshot.children){
+            NSString *key = AddedPlace.key;
+            NSDictionary *AddedPlacesDict = AddedPlace.value;
+            [AddedPlacesDict objectForKey:key];
+            GooglePlace *googletemp = [[GooglePlace alloc]init];
+            googletemp.name =[AddedPlacesDict objectForKey:@"Name"];
+            googletemp.formattedAddress=[AddedPlacesDict objectForKey:@"Address"];
+            googletemp.placeID=[AddedPlacesDict objectForKey:@"placeID"];
+            [MyUserAddedLocations addObject:googletemp];
+        }
+    }];
+    FavoritedPlaces=[[NSMutableArray alloc] init];
+    [[[[_ref child:@"users"] child:user.uid] child:@"Favorite Places"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot){
+        
+        for (FIRDataSnapshot *FavePlace in snapshot.children){
+            NSString *key = FavePlace.key;
+            NSDictionary *FavePlacesDict = FavePlace.value;
+            [FavePlacesDict objectForKey:key];
+            GooglePlace *googletemp = [[GooglePlace alloc]init];
+            googletemp.name =[FavePlacesDict objectForKey:@"Name"];
+            googletemp.formattedAddress=[FavePlacesDict objectForKey:@"Address"];
+            googletemp.placeID=[FavePlacesDict objectForKey:@"placeID"];
+            [FavoritedPlaces addObject:googletemp];
+        }
+    }];
     return YES;
 }
 

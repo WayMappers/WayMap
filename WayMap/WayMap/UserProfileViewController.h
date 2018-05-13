@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GooglePlace.h"
+#import "TipsFirstTableViewController.h"
+#import "TipsSecondTableViewController.h"
+@interface UserProfileViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UITabBarControllerDelegate,UITabBarDelegate>
 
-@interface UserProfileViewController : UIViewController
+@property (strong, nonatomic) NSMutableArray *userAddedPlaces;
+@property (strong, nonatomic) NSMutableArray *favoritePlaces;
+
+- (IBAction)ProfilePictureUpload:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *testLabel;
 
 @end
